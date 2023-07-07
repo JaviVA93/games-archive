@@ -1,0 +1,54 @@
+---
+export interface Props {
+    name: string;
+    imageUrl: string;
+    slug: string;
+}
+
+const { name, imageUrl, slug } = Astro.props;
+---
+
+<a href={`/games/${slug}`} class="gameCard">
+    <div class="imageCover">
+        <img src={imageUrl} alt=`${name} image` />
+    </div>
+    <h1>{name}</h1>
+</a>
+
+<style>
+    .gameCard {
+        display: flex;
+        position: relative;
+        width: 250px;
+        height: 400px;
+        text-decoration: none;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .imageCover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.4) 80%,
+            rgba(0, 0, 0, 1) 100%
+        );
+    }
+
+    .gameCard img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: -1;
+    }
+    .gameCard h1 {
+        margin: auto 10px 12px;
+        color: white;
+        z-index: 1;
+    }
+</style>

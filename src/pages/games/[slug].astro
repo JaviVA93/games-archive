@@ -1,0 +1,34 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const { slug } = Astro.params;
+
+const response = await fetch(
+    `https://api.rawg.io/api/games/${slug}?key=${import.meta.env.RAWG_API_KEY}`
+);
+
+// if(response.ok)
+    
+const data = await response.json();
+---
+
+<Layout title={data.name}>
+    <main class="gamePage">
+        <a href="/">Back to Home</a>
+        <h1>{data.name}</h1>
+        <img src={data.background_image} alt=`${data.name} image` />
+        {data.description}
+    </main>
+</Layout>
+
+<style>
+    .gamePage {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 1200px;
+	}
+
+    .gamePage > img {
+        max-width: 100%;
+    }
+</style>
