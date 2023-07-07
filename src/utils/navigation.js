@@ -5,9 +5,10 @@ const checkIsNavigationSupported = () => {
 const fetchPage = async (url) => {
     const response = await fetch(url);
     const text = await response.text();
-    const [, data] = text.match(/<body>([\s\S]*)<\/body>/i);
-    console.log(data)
-    return data
+    // const [, data] = text.match(/<body>([\s\S]*)<\/body>/i); // <==== new styles will be on <head>
+    
+    // return data
+    return text
 }
 
 export const startViewTransition = () => {
@@ -23,7 +24,7 @@ export const startViewTransition = () => {
                 const data = await fetchPage(toUrl.pathname)
 
                 document.startViewTransition(() => {
-                    document.body.innerHTML = data
+                    document.documentElement.innerHTML = data
 
                     document.documentElement.scrollTop = 0
                 });
