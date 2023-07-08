@@ -8,14 +8,15 @@ export interface Props {
 const { name, imageUrl, slug } = Astro.props;
 ---
 
-<a href={`/games/${slug}`} class="gameCard">
+<a href={`/games/${slug}`} 
+    class="gameCard">
     <div class="imageCover">
-        <img src={imageUrl} alt=`${name} image` />
+        <img src={imageUrl} alt=`${name} image` style=`view-transition-name: game-${slug}` />
     </div>
-    <h1>{name}</h1>
+    <h1 style=`view-transition-name: game-name-${slug}`>{name}</h1>
 </a>
 
-<style>
+<style is:inline>
     .gameCard {
         display: flex;
         position: relative;
@@ -40,8 +41,8 @@ const { name, imageUrl, slug } = Astro.props;
 
     .gameCard img {
         position: absolute;
-        width: 100%;
-        height: 100%;
+        width: 250px;
+        height: 400px;
         object-fit: cover;
         object-position: center;
         z-index: -1;

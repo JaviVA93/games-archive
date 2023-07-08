@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GameCard from "../components/GameCard.astro";
+
+const response = await fetch(
+	`https://api.rawg.io/api/games?key=${import.meta.env.RAWG_API_KEY}`
+);
+const data = await response.json();
+---
+
+<Layout title="The Games Archive">
+	<main class="homeMain">
+		<h1>Welcome to the Games Archive</h1>
+		<div class="gamesGrid">
+			{
+				data.results.map((game: any) => {
+					return (
+						<GameCard
+							name={game.name}
+							imageUrl={game.background_image}
+							slug={game.slug}
+						/>
+					);
+				})
+			}
+		</div>
+	</main>
+</Layout>
+
+<style is:inline>
+	.homeMain {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 1200px;
+	}
+	.homeMain > h1 {
+		text-align: center;
+		view-transition-name: header;
+	}
+	.gamesGrid {
+		display: grid;
+		place-items: center;
+		gap: 10px;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		width: 100%;
+	}
+</style>

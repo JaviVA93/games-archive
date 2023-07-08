@@ -1,5 +1,4 @@
 ---
-
 export interface Props {
 	title: string;
 }
@@ -16,6 +15,11 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="view-transition" content="same-origin" />
+		<script>
+			import { startViewTransition } from "../utils/navigation";
+
+			startViewTransition();
+		</script>
 		<title>{title}</title>
 	</head>
 	<body>
@@ -33,19 +37,19 @@ const { title } = Astro.props;
 			#da62c4 30%,
 			white 60%
 		);
+		--color-1: #001524;
+		--color-2: #15616d;
+		--color-3: #ffecd1;
+		--color-4: ;
+		--color-5: #78290f;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background-color: #f6f6f6;
+		color: #ffecd1;
+		background-color: #001524;
 	}
 	code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
 			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 	}
 </style>
-
-<script>
-	import { startViewTransition } from "../utils/navigation"
-
-	startViewTransition()
-</script>

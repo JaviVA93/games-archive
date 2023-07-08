@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BackSvg from "./Assets/BackSvg.astro";
+
+export interface Props {
+    slug: string;
+}
+
+const { slug } = Astro.props;
+
+const response = await fetch(
+    `https://api.rawg.io/api/games/${slug}?key=${import.meta.env.RAWG_API_KEY}`
+);
+
+// if(response.ok)
+
+const data = await response.json();
+---
+
+<main class="gamePage">
+    <header>
+        <a href="/">
+            <BackSvg color="#FF7D00" />
+            Back to Home
+        </a>
+        <h1 style=`view-transition-name: game-name-${slug}`>{data.name}</h1>
+    </header>
+    <img
+        src={data.background_image}
+        style=`view-transition-name: game-${slug}`
+        alt=`${data.name} image`
+    />
+    <Fragment set:html={data.description} />
+</main>
+
+<style is:inline>
+    .gamePage header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .gamePage header a {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        text-decoration: none;
+        color: var(--color-4);
+        transition: transform 0.5s;
+    }
+    .gamePage header a:hover {
+        transform: translateX(-10px);
+    }
+    .gamePage header h1 {
+        color: var(--color-3);
+    }
+    .gamePage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        padding: 1.5rem;
+        max-width: 1200px;
+    }
+
+    .gamePage > img {
+        max-width: 900px;
+        height: 400px;
+        object-fit: cover;
+        object-position: center;
+    }
+</style>
