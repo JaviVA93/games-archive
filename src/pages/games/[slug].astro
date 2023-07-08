@@ -1,5 +1,5 @@
 ---
-import GamePage from "../../components/GamePage.astro";
+import GamePageFragment from "../fragments/games/[slug].astro"
 import Layout from "../../layouts/Layout.astro";
 
 let { slug } = Astro.params;
@@ -7,5 +7,5 @@ slug = slug || "";
 ---
 
 <Layout title='Game'>
-    <GamePage slug={slug} />
+    <GamePageFragment />
 </Layout>

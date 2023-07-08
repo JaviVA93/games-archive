@@ -1,0 +1,188 @@
+---
+import BackSvg from "../../../components/Assets/BackSvg.astro";
+import MetacriticSvg from "../../../components/Assets/MetacriticSvg.astro";
+
+const { slug } = Astro.params;
+
+const gameDataReq = await fetch(
+    `https://api.rawg.io/api/games/${slug}?key=${import.meta.env.RAWG_API_KEY}`
+);
+const gameData = await gameDataReq.json();
+
+const { name, background_image, metacritic, description, released, platforms } =
+    gameData;
+const platformsName = platforms.map((p: any) => p.platform.name);
+const platformsNameStr = platformsName.join(", ");
+
+
+const gameScreenshotsReq = await fetch(`https://api.rawg.io/api/games/${slug}/screenshots?key=${import.meta.env.RAWG_API_KEY}`)
+const gameScreenshots = await gameScreenshotsReq.json()
+console.log(gameScreenshots)
+
+let images = '';
+for (let i = 0; i < 3 && i < gameScreenshots.count; i++) {
+    images += `<img src="${gameScreenshots.results[i].image}" alt="${name} screenshot ${i}" >` 
+}
+
+
+---
+
+<main class="gamePage">
+    <header>
+        <a href="/">
+            <BackSvg color="#FF7D00" />
+            Back to Home
+        </a>
+        <h1>{name}</h1>
+    </header>
+    <div class="imagesContainer">
+        <img
+            src={background_image}
+            style=`view-transition-name: game-${slug}`
+            alt=`${name} image`
+        />
+        <div class="gameScreenshots">
+            <Fragment set:html={images} />
+        </div>
+    </div>
+    <div class="gameContentWrapper">
+        <ul class="gameData">
+            <li>
+                <span class="dataName">Metacritic:</span>
+                <span class="dataValue">{metacritic}</span>
+                <MetacriticSvg className="metacriticSvg" />
+            </li>
+            <li>
+                <span class="dataName">Released:</span>
+                <span class="dataValue">{released}</span>
+            </li>
+            <li>
+                <span class="dataName">Platforms:</span>
+                <span class="dataValue">{platformsNameStr}</span>
+            </li>
+        </ul>
+        <div class="gameDescription">
+            <Fragment set:html={description} />
+        </div>
+    </div>
+</main>
+
+<style is:inline>
+    .gamePage header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .gamePage header a {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        text-decoration: none;
+        color: var(--color-4);
+        transition: transform 0.5s;
+
+        animation: fromLeft 0.5s ease-out;
+    }
+    .gamePage header a:hover {
+        transform: translateX(-10px);
+    }
+    .gamePage header h1 {
+        color: var(--color-3);
+        animation: fromRight 0.5s ease-out;
+    }
+    .gamePage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        padding: 1.5rem;
+        max-width: 1200px;
+    }
+
+    .imagesContainer {
+        display: flex;
+        gap: 15px;
+    }
+
+    .imagesContainer > img {
+        max-width: 900px;
+        height: 400px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .gameScreenshots {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .gameScreenshots img {
+        max-width: 200px;
+        max-height: 200px;
+        object-fit: cover;
+        object-position: center;
+        transition: all 0.25s;
+    }
+
+    .gameScreenshots :not(img:nth-child(1)):active {
+        transform: scale(2.5) translateX(-50px);
+    }
+
+    .gameScreenshots img:nth-child(1):active {
+        transform: scale(2.5) translate(-50px, 25px);
+    }
+
+    .gameContentWrapper {
+        display: grid;
+        grid-template-columns: 20% 80%;
+    }
+
+    .gameData {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .gameData li {
+        display: flex;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .gameData li .dataValue {
+        color: var(--color-2);
+    }
+    .gameData li .dataName {
+        color: var(--color-5);
+    }
+
+    .metacriticSvg {
+        width: 20px;
+        height: 20px;
+    }
+
+
+    @keyframes fromLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-60px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+
+    @keyframes fromRight {
+        from {
+            opacity: 0;
+            transform: translateX(60px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+</style>

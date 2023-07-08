@@ -8,12 +8,11 @@ export interface Props {
 const { name, imageUrl, slug } = Astro.props;
 ---
 
-<a href={`/games/${slug}`} 
-    class="gameCard">
+<a href={`/games/${slug}`} class="gameCard">
     <div class="imageCover">
         <img src={imageUrl} alt=`${name} image` style=`view-transition-name: game-${slug}` />
     </div>
-    <h1 style=`view-transition-name: game-name-${slug}`>{name}</h1>
+    <h1>{name}</h1>
 </a>
 
 <style is:inline>
@@ -25,6 +24,13 @@ const { name, imageUrl, slug } = Astro.props;
         text-decoration: none;
         border-radius: 8px;
         overflow: hidden;
+
+        transition: all 0.25s;
+    }
+
+    .gameCard:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 4px 4px 10px var(--color-5);
     }
 
     .imageCover {

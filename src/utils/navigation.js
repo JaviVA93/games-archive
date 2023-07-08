@@ -2,13 +2,11 @@ const checkIsNavigationSupported = () => {
     return Boolean(document.startViewTransition)
 }
 
-const fetchPage = async (url) => {
-    const response = await fetch(url);
+const fetchPage = async (urlPath) => {
+    const response = await fetch(`/fragments${urlPath}`);
     const text = await response.text();
-    const [, data] = text.match(/<body>([\s\S]*)<\/body>/i); // <==== new styles will be on <head>
 
-    return data
-    // return text
+    return text
 }
 
 export const startViewTransition = () => {
