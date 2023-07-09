@@ -1,0 +1,32 @@
+---
+import HomePageFragment from "./fragments/index.astro";
+import Layout from "../layouts/Layout.astro";
+import BackSvg from "../components/Assets/BackSvg.astro";
+---
+
+<Layout title="The Games Archive 404">
+    <main>
+        <h1>Page not found 😖</h1>
+        <img src="/gameover.gif" />
+        <a href="/">
+            <BackSvg color="#FF7D00"/>
+            Back Home
+        </a>
+    </main>
+</Layout>
+<style>
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    a {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+        color: var(--color-4)
+    }
+</style>

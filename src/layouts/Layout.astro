@@ -58,6 +58,9 @@ const { title } = Astro.props;
     ::view-transition-old(home-title):only-child {
         animation: toRight 0.25s ease-out;
     }
+    ::view-transition-new(screenshots-wrapper):only-child {
+        animation: fromRight 0.25s ease-out;
+    }
 
 	@keyframes fromLeft {
         from {

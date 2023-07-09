@@ -6,9 +6,12 @@
 - https://caniuse.com/view-transitions
 
 
-### I'm using [RAWG API](https://rawg.io/) to get the games data 🎮🗡️👾
+\
+.
+### [RAWG API](https://rawg.io/) to get the games data 🎮🗡️👾
 
-
+\
+.
 ### 💻 Commands
 
 All commands are run from the root of the project, from a terminal:
