@@ -1,50 +1,81 @@
 ---
 import BackSvg from "../../../components/Assets/BackSvg.astro";
 import MetacriticSvg from "../../../components/Assets/MetacriticSvg.astro";
+import gamesData from "../../../data.json";
+import CloseSvg from "../../../components/Assets/CloseSvg.astro";
 
-const { slug } = Astro.params;
+// const { slug } = Astro.params;
 
-const gameDataReq = await fetch(
-    `https://api.rawg.io/api/games/${slug}?key=${import.meta.env.RAWG_API_KEY}`
-);
-const gameData = await gameDataReq.json();
+// const gameDataReq = await fetch(
+//     `https://api.rawg.io/api/games/${slug}?key=${import.meta.env.RAWG_API_KEY}`
+// );
+// const gameData = await gameDataReq.json();
 
-const { name, background_image, metacritic, description, released, platforms } =
-    gameData;
-const platformsName = platforms.map((p: any) => p.platform.name);
-const platformsNameStr = platformsName.join(", ");
+// const { name, background_image, metacritic, description, released, platforms } =
+//     gameData;
+// const platformsName = platforms.map((p: any) => p.platform.name);
+// const platformsNameStr = platformsName.join(", ");
 
+// const gameScreenshotsReq = await fetch(`https://api.rawg.io/api/games/${slug}/screenshots?key=${import.meta.env.RAWG_API_KEY}`)
+// const gameScreenshots = await gameScreenshotsReq.json()
+// console.log(gameScreenshots)
 
-const gameScreenshotsReq = await fetch(`https://api.rawg.io/api/games/${slug}/screenshots?key=${import.meta.env.RAWG_API_KEY}`)
-const gameScreenshots = await gameScreenshotsReq.json()
-console.log(gameScreenshots)
-
-let images = '';
-for (let i = 0; i < 3 && i < gameScreenshots.count; i++) {
-    images += `<img src="${gameScreenshots.results[i].image}" alt="${name} screenshot ${i}" >` 
+export function getStaticPaths() {
+    return gamesData.games.map((g) => {
+        params: {
+            slug: g.slug;
+        }
+    });
 }
 
+const { slug } = Astro.params;
+const gameData = gamesData.games.find((g) => g.slug === slug);
+if (!gameData) return;
+const {
+    name,
+    background_image,
+    metacritic,
+    description_raw,
+    released,
+    platforms,
+    screenshots,
+} = gameData;
 
+const platformsName = platforms.map((p: any) => p.platform.name);
+const platformsNameStr = platformsName.join(", ");
 ---
 
 <main class="gamePage">
     <header>
         <a href="/">
             <BackSvg color="#FF7D00" />
-            <span>
-                Back to Home
-            </span>
+            <span> Back to Home</span>
         </a>
         <h1>{name}</h1>
     </header>
     <div class="imagesContainer">
-        <img src={background_image}
+        <img
+            src={background_image}
             class="mainImage"
             style=`view-transition-name: game-${slug}`
             alt=`${name} image`
         />
         <div class="gameScreenshots">
-            <Fragment set:html={images} />
+            <img
+                src={screenshots.results[0].image}
+                alt=`${name} screenshot 1`
+                data-pos="1"
+            />
+            <img
+                src={screenshots.results[1].image}
+                alt=`${name} screenshot 2`
+                data-pos="2"
+            />
+            <img
+                src={screenshots.results[2].image}
+                alt=`${name} screenshot 3`
+                data-pos="3"
+            />
         </div>
     </div>
     <div class="gameContentWrapper">
@@ -66,8 +97,14 @@ for (let i = 0; i < 3 && i < gameScreenshots.count; i++) {
             </li>
         </ul>
         <div class="gameDescription">
-            <Fragment set:html={description} />
+            {description_raw}
         </div>
+    </div>
+    <div class="imageModal hidden">
+        <button class="closeModalBtn">
+            <CloseSvg className="closeSvg" />
+        </button>
+        <div class="imageSlot"></div>
     </div>
 </main>
 
@@ -141,12 +178,8 @@ for (let i = 0; i < 3 && i < gameScreenshots.count; i++) {
         animation: popUp 0.25s ease-out;
     }
 
-    .gameScreenshots :not(img:nth-child(1)):active {
-        transform: scale(2.5) translateX(-50px);
-    }
-
-    .gameScreenshots img:nth-child(1):active {
-        transform: scale(2.5) translate(-50px, 25px);
+    .gameScreenshots img:hover {
+        transform: scale(1.15);
     }
 
     .gameContentWrapper {
@@ -191,6 +224,33 @@ for (let i = 0; i < 3 && i < gameScreenshots.count; i++) {
         margin-top: 0;
     }
 
+    .imageModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: grid;
+        place-items: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .closeModalBtn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .closeSvg * {
+        fill: white;
+    }
+
     @media screen and (max-width: 950px) {
         .imagesContainer {
             grid-template-columns: 100%;
@@ -223,5 +283,57 @@ for (let i = 0; i < 3 && i < gameScreenshots.count; i++) {
             transform: scale(1);
         }
     }
-
 </style>
+
+<script is:inline>
+(() => {
+    const imageModal = document.querySelector(".imageModal");
+
+    document.querySelectorAll(".gameScreenshots img").forEach((img) => {
+        img.addEventListener("click", () => {
+            const imageSlot = document.querySelector(".imageSlot");
+
+            if (!imageSlot || !imageModal) return;
+
+            img.setAttribute("style", "view-transition-name: image-modal");
+            document.startViewTransition(() => {
+                const imgClone = img.cloneNode();
+                img.setAttribute("style", "");
+                imageSlot.innerHTML = ``;
+                imageSlot.append(imgClone);
+
+                imageModal.classList.remove("hidden");
+            });
+        });
+    });
+
+    const setCloseModalBtnBehavior = () => {
+        console.log("hola");
+        const closeModalBtn = document.querySelector(".closeModalBtn");
+        if (!closeModalBtn || !imageModal) return;
+
+        closeModalBtn.addEventListener("click", () => {
+            const imagePos = imageModal
+                .querySelector("img")
+                ?.getAttribute("data-pos");
+
+            const screenshotResult = document.querySelector(
+                `.gameScreenshots img[data-pos="${imagePos}"]`
+            );
+            document.startViewTransition(() => {
+                screenshotResult?.setAttribute(
+                    "style",
+                    "view-transition-name: image-modal"
+                );
+                imageModal.querySelector("img")?.remove();
+                imageModal.classList.add("hidden");
+            });
+
+            setTimeout(() => {
+                screenshotResult?.setAttribute("style", "");
+            }, 200);
+        });
+    };
+    setCloseModalBtnBehavior();
+})();
+</script>

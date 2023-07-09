@@ -23,7 +23,6 @@ export const startViewTransition = () => {
                 const data = await fetchPage(toUrl.pathname)
 
                 document.startViewTransition(() => {
-                    // document.documentElement.innerHTML = data
                     document.getElementById('mainContent').innerHTML = data
 
                     document.documentElement.scrollTop = 0

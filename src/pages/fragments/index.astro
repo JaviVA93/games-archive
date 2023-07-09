@@ -1,17 +1,20 @@
 ---
 import GameCard from "../../components/GameCard.astro";
+import gamesData from "../../data.json"
 
-const response = await fetch(
-    `https://api.rawg.io/api/games?key=${import.meta.env.RAWG_API_KEY}`
-);
-const data = await response.json();
+// const response = await fetch(
+//     `https://api.rawg.io/api/games?key=${import.meta.env.RAWG_API_KEY}`
+// );
+// const data = await response.json();
+
+const data = gamesData.games 
 ---
 
 <main class="homeMain">
     <h1>Welcome to the Games Archive</h1>
     <div class="gamesGrid">
         {
-            data.results.map((game: any) => {
+            data.map((game: any) => {
                 return (
                     <GameCard
                         name={game.name}
