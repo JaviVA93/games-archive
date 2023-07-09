@@ -1,10 +1,12 @@
 # Created with Astro & View Transitions API
 
+## You can take a look here: https://games-archive.javiva.dev/ 
+
 ### This will looks better using supported browsers:
 - https://caniuse.com/view-transitions
 
 
-### Using [RAWG API](https://rawg.io/) to get the games data 🎮🗡️ 
+### I'm using [RAWG API](https://rawg.io/) to get the games data 🎮🗡️👾
 
 
 ### 💻 Commands
