@@ -2,23 +2,6 @@
 import BackSvg from "../../../components/Assets/BackSvg.astro";
 import MetacriticSvg from "../../../components/Assets/MetacriticSvg.astro";
 import gamesData from "../../../data.json";
-import CloseSvg from "../../../components/Assets/CloseSvg.astro";
-
-// const { slug } = Astro.params;
-
-// const gameDataReq = await fetch(
-//     `https://api.rawg.io/api/games/${slug}?key=${import.meta.env.RAWG_API_KEY}`
-// );
-// const gameData = await gameDataReq.json();
-
-// const { name, background_image, metacritic, description, released, platforms } =
-//     gameData;
-// const platformsName = platforms.map((p: any) => p.platform.name);
-// const platformsNameStr = platformsName.join(", ");
-
-// const gameScreenshotsReq = await fetch(`https://api.rawg.io/api/games/${slug}/screenshots?key=${import.meta.env.RAWG_API_KEY}`)
-// const gameScreenshots = await gameScreenshotsReq.json()
-// console.log(gameScreenshots)
 
 export function getStaticPaths() {
     return gamesData.games.map((g) => {
@@ -100,12 +83,6 @@ const platformsNameStr = platformsName.join(", ");
             {description_raw}
         </div>
     </div>
-    <div class="imageModal hidden">
-        <button class="closeModalBtn">
-            <CloseSvg className="closeSvg" />
-        </button>
-        <div class="imageSlot"></div>
-    </div>
 </main>
 
 <style is:inline>
@@ -164,25 +141,21 @@ const platformsNameStr = platformsName.join(", ");
     .gameScreenshots {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        justify-content: space-around;
+        view-transition-name: screenshots-wrapper;
     }
 
     .gameScreenshots img {
-        max-width: 200px;
-        max-height: 200px;
+        max-width: 100%;
+        max-height: 33%;
         object-fit: cover;
         object-position: center;
         transition: all 0.25s;
         border-radius: 5px;
-
-        animation: popUp 0.25s ease-out;
-    }
-
-    .gameScreenshots img:hover {
-        transform: scale(1.15);
     }
 
     .gameContentWrapper {
+        width: 100%;
         display: grid;
         grid-template-columns: calc(20% - 20px) calc(80% - 20px);
         gap: 40px;
@@ -196,6 +169,7 @@ const platformsNameStr = platformsName.join(", ");
         display: flex;
         flex-direction: column;
         gap: 10px;
+        margin-top: 22px;
     }
 
     .gameData li {
@@ -218,6 +192,7 @@ const platformsNameStr = platformsName.join(", ");
 
     .gameDescription {
         max-width: 650px;
+        white-space: pre-line;
     }
 
     .gameDescription p:nth-child(1) {
@@ -257,9 +232,11 @@ const platformsNameStr = platformsName.join(", ");
         }
         .gameScreenshots {
             flex-direction: row;
+            gap: 4px;
         }
         .gameScreenshots img {
             max-width: 32%;
+            max-height: unset;
         }
         .gameContentWrapper {
             grid-template-columns: 100%;
@@ -268,72 +245,11 @@ const platformsNameStr = platformsName.join(", ");
     }
 
     @media screen and (max-width: 760px) {
+        .gamePage header a:hover {
+            transform: translateX(-5px);
+        }
         .gamePage header a > span {
             display: none;
         }
     }
-
-    @keyframes popUp {
-        from {
-            opacity: 0;
-            transform: scale(0);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
 </style>
-
-<script is:inline>
-(() => {
-    const imageModal = document.querySelector(".imageModal");
-
-    document.querySelectorAll(".gameScreenshots img").forEach((img) => {
-        img.addEventListener("click", () => {
-            const imageSlot = document.querySelector(".imageSlot");
-
-            if (!imageSlot || !imageModal) return;
-
-            img.setAttribute("style", "view-transition-name: image-modal");
-            document.startViewTransition(() => {
-                const imgClone = img.cloneNode();
-                img.setAttribute("style", "");
-                imageSlot.innerHTML = ``;
-                imageSlot.append(imgClone);
-
-                imageModal.classList.remove("hidden");
-            });
-        });
-    });
-
-    const setCloseModalBtnBehavior = () => {
-        console.log("hola");
-        const closeModalBtn = document.querySelector(".closeModalBtn");
-        if (!closeModalBtn || !imageModal) return;
-
-        closeModalBtn.addEventListener("click", () => {
-            const imagePos = imageModal
-                .querySelector("img")
-                ?.getAttribute("data-pos");
-
-            const screenshotResult = document.querySelector(
-                `.gameScreenshots img[data-pos="${imagePos}"]`
-            );
-            document.startViewTransition(() => {
-                screenshotResult?.setAttribute(
-                    "style",
-                    "view-transition-name: image-modal"
-                );
-                imageModal.querySelector("img")?.remove();
-                imageModal.classList.add("hidden");
-            });
-
-            setTimeout(() => {
-                screenshotResult?.setAttribute("style", "");
-            }, 200);
-        });
-    };
-    setCloseModalBtnBehavior();
-})();
-</script>

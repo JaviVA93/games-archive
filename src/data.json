@@ -4715,6 +4715,354 @@
                     }
                 ]
             }
+        },
+        {
+            "id": 5538,
+            "slug": "dark-souls",
+            "name": "Dark Souls",
+            "name_original": "Dark Souls",
+            "description": "<p>Bone-rattling because of its complexity adventure in the Lordran, land of the ancient lords and endless mysteries. We are playing for a tacit prisoner, whose goal is to become human again. This is the first game in the series.</p>\n<p>The main game mechanics is exploration. Dark Souls is a third-person action RPG, a part of the Souls series. The player slowly advances from one point of contact to another, defeating more and more powerful enemies. Completing the game is a truly hard task with the first, one of the main features of the series - a constant repetition and search for better tactics to overcome a certain enemy. After each savepoint respawns defeated enemies, after each death the player loses all the accumulated in-game currency.</p>\n<p>In the game there is an unconventional multiplayer system: players can invite other people to join their game sessions for a duel or to help each other with difficult bosses.</p>",
+            "metacritic": 89,
+            "metacritic_platforms": [
+                {
+                    "metascore": 89,
+                    "url": "https://www.metacritic.com/game/xbox-360/dark-souls",
+                    "platform": {
+                        "platform": 14,
+                        "name": "Xbox 360",
+                        "slug": "xbox360"
+                    }
+                },
+                {
+                    "metascore": 89,
+                    "url": "https://www.metacritic.com/game/playstation-3/dark-souls",
+                    "platform": {
+                        "platform": 16,
+                        "name": "PlayStation 3",
+                        "slug": "playstation3"
+                    }
+                }
+            ],
+            "released": "2011-09-22",
+            "tba": false,
+            "updated": "2023-06-20T14:32:52",
+            "background_image": "https://media.rawg.io/media/games/582/582b5518a52f5086d15dde128264b94d.jpg",
+            "background_image_additional": "https://media.rawg.io/media/screenshots/3ba/3bad2cf254b8051de0159d9197c5128f.jpg",
+            "website": "http://www.fromsoftware.jp/game/projectdark/",
+            "rating": 4.33,
+            "rating_top": 5,
+            "ratings": [
+                {
+                    "id": 5,
+                    "title": "exceptional",
+                    "count": 528,
+                    "percent": 60
+                },
+                {
+                    "id": 4,
+                    "title": "recommended",
+                    "count": 210,
+                    "percent": 23.86
+                },
+                {
+                    "id": 3,
+                    "title": "meh",
+                    "count": 94,
+                    "percent": 10.68
+                },
+                {
+                    "id": 1,
+                    "title": "skip",
+                    "count": 48,
+                    "percent": 5.45
+                }
+            ],
+            "reactions": {
+                "1": 3,
+                "2": 1,
+                "3": 2,
+                "4": 2,
+                "5": 1,
+                "6": 3,
+                "8": 1,
+                "10": 1,
+                "11": 2,
+                "12": 1,
+                "16": 1
+            },
+            "added": 3139,
+            "added_by_status": {
+                "yet": 130,
+                "owned": 2010,
+                "beaten": 598,
+                "toplay": 103,
+                "dropped": 258,
+                "playing": 40
+            },
+            "playtime": 48,
+            "screenshots_count": 190,
+            "movies_count": 0,
+            "creators_count": 6,
+            "achievements_count": 106,
+            "parent_achievements_count": 24,
+            "reddit_url": "https://www.reddit.com/r/darksouls/",
+            "reddit_name": "Dark Souls",
+            "reddit_description": "A community dedicated to Dark Souls I, game released for PC, PlayStation 3 and 4, Xbox 360/One, and Switch (Remastered).",
+            "reddit_logo": "https://b.thumbs.redditmedia.com/HI0MibQLRQL0ijz7.png",
+            "reddit_count": 11879,
+            "twitch_count": 106,
+            "youtube_count": 1000000,
+            "reviews_text_count": 7,
+            "ratings_count": 873,
+            "suggestions_count": 672,
+            "alternative_names": [],
+            "metacritic_url": "https://www.metacritic.com/game/playstation-3/dark-souls",
+            "parents_count": 1,
+            "additions_count": 2,
+            "game_series_count": 10,
+            "user_game": null,
+            "reviews_count": 880,
+            "saturated_color": "0f0f0f",
+            "dominant_color": "0f0f0f",
+            "parent_platforms": [
+                {
+                    "platform": {
+                        "id": 1,
+                        "name": "PC",
+                        "slug": "pc"
+                    }
+                },
+                {
+                    "platform": {
+                        "id": 2,
+                        "name": "PlayStation",
+                        "slug": "playstation"
+                    }
+                },
+                {
+                    "platform": {
+                        "id": 3,
+                        "name": "Xbox",
+                        "slug": "xbox"
+                    }
+                }
+            ],
+            "platforms": [
+                {
+                    "platform": {
+                        "id": 14,
+                        "name": "Xbox 360",
+                        "slug": "xbox360",
+                        "image": null,
+                        "year_end": null,
+                        "year_start": null,
+                        "games_count": 2786,
+                        "image_background": "https://media.rawg.io/media/games/8d6/8d69eb6c32ed6acfd75f82d532144993.jpg"
+                    },
+                    "released_at": "2011-09-22",
+                    "requirements": {}
+                },
+                {
+                    "platform": {
+                        "id": 4,
+                        "name": "PC",
+                        "slug": "pc",
+                        "image": null,
+                        "year_end": null,
+                        "year_start": null,
+                        "games_count": 513929,
+                        "image_background": "https://media.rawg.io/media/games/8cc/8cce7c0e99dcc43d66c8efd42f9d03e3.jpg"
+                    },
+                    "released_at": "2011-09-22",
+                    "requirements": {}
+                },
+                {
+                    "platform": {
+                        "id": 16,
+                        "name": "PlayStation 3",
+                        "slug": "playstation3",
+                        "image": null,
+                        "year_end": null,
+                        "year_start": null,
+                        "games_count": 3183,
+                        "image_background": "https://media.rawg.io/media/games/8e4/8e4de3f54ac659e08a7ba6a2b731682a.jpg"
+                    },
+                    "released_at": "2011-09-22",
+                    "requirements": {}
+                }
+            ],
+            "stores": [
+                {
+                    "id": 5893,
+                    "url": "",
+                    "store": {
+                        "id": 3,
+                        "name": "PlayStation Store",
+                        "slug": "playstation-store",
+                        "domain": "store.playstation.com",
+                        "games_count": 7823,
+                        "image_background": "https://media.rawg.io/media/games/fc1/fc1307a2774506b5bd65d7e8424664a7.jpg"
+                    }
+                },
+                {
+                    "id": 33975,
+                    "url": "",
+                    "store": {
+                        "id": 7,
+                        "name": "Xbox 360 Store",
+                        "slug": "xbox360",
+                        "domain": "marketplace.xbox.com",
+                        "games_count": 1912,
+                        "image_background": "https://media.rawg.io/media/games/73e/73eecb8909e0c39fb246f457b5d6cbbe.jpg"
+                    }
+                }
+            ],
+            "developers": [
+                {
+                    "id": 386,
+                    "name": "BANDAI NAMCO Entertainment America",
+                    "slug": "bandai-namco-entertainment-america-inc",
+                    "games_count": 143,
+                    "image_background": "https://media.rawg.io/media/games/582/582b5518a52f5086d15dde128264b94d.jpg"
+                },
+                {
+                    "id": 6763,
+                    "name": "FromSoftware",
+                    "slug": "fromsoftware",
+                    "games_count": 68,
+                    "image_background": "https://media.rawg.io/media/games/0b0/0b038e68f678b0c6c0d3ae7124e47897.jpg"
+                }
+            ],
+            "genres": [
+                {
+                    "id": 4,
+                    "name": "Action",
+                    "slug": "action",
+                    "games_count": 173233,
+                    "image_background": "https://media.rawg.io/media/games/4be/4be6a6ad0364751a96229c56bf69be59.jpg"
+                },
+                {
+                    "id": 5,
+                    "name": "RPG",
+                    "slug": "role-playing-games-rpg",
+                    "games_count": 52698,
+                    "image_background": "https://media.rawg.io/media/games/d0f/d0f91fe1d92332147e5db74e207cfc7a.jpg"
+                }
+            ],
+            "tags": [
+                {
+                    "id": 7,
+                    "name": "Multiplayer",
+                    "slug": "multiplayer",
+                    "language": "eng",
+                    "games_count": 35108,
+                    "image_background": "https://media.rawg.io/media/games/021/021c4e21a1824d2526f925eff6324653.jpg"
+                },
+                {
+                    "id": 6,
+                    "name": "Exploration",
+                    "slug": "exploration",
+                    "language": "eng",
+                    "games_count": 19523,
+                    "image_background": "https://media.rawg.io/media/games/9aa/9aa42d16d425fa6f179fc9dc2f763647.jpg"
+                },
+                {
+                    "id": 41,
+                    "name": "Dark",
+                    "slug": "dark",
+                    "language": "eng",
+                    "games_count": 14171,
+                    "image_background": "https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg"
+                },
+                {
+                    "id": 974,
+                    "name": "death",
+                    "slug": "death",
+                    "language": "eng",
+                    "games_count": 3733,
+                    "image_background": "https://media.rawg.io/media/screenshots/cae/caef6746c4abc9a58cf321eea1d05661_x7PoPO5.jpg"
+                },
+                {
+                    "id": 1382,
+                    "name": "duel",
+                    "slug": "duel",
+                    "language": "eng",
+                    "games_count": 571,
+                    "image_background": "https://media.rawg.io/media/screenshots/891/891960121e1e98c4375a7a98edeba744.jpg"
+                }
+            ],
+            "publishers": [
+                {
+                    "id": 8352,
+                    "name": "Bandai Namco Entertainment",
+                    "slug": "bandai-namco-entertainment",
+                    "games_count": 579,
+                    "image_background": "https://media.rawg.io/media/games/da1/da1b267764d77221f07a4386b6548e5a.jpg"
+                },
+                {
+                    "id": 31896,
+                    "name": "BANDAI NAMCO Entertainment US",
+                    "slug": "bandai-namco-entertainment-us",
+                    "games_count": 158,
+                    "image_background": "https://media.rawg.io/media/screenshots/1cc/1cc5de44a7cc16510f7a139ae5493b6d.jpg"
+                }
+            ],
+            "esrb_rating": {
+                "id": 4,
+                "name": "Mature",
+                "slug": "mature"
+            },
+            "clip": null,
+            "description_raw": "Bone-rattling because of its complexity adventure in the Lordran, land of the ancient lords and endless mysteries. We are playing for a tacit prisoner, whose goal is to become human again. This is the first game in the series.\n\nThe main game mechanics is exploration. Dark Souls is a third-person action RPG, a part of the Souls series. The player slowly advances from one point of contact to another, defeating more and more powerful enemies. Completing the game is a truly hard task with the first, one of the main features of the series - a constant repetition and search for better tactics to overcome a certain enemy. After each savepoint respawns defeated enemies, after each death the player loses all the accumulated in-game currency.\n\nIn the game there is an unconventional multiplayer system: players can invite other people to join their game sessions for a duel or to help each other with difficult bosses.",
+            "screenshots": {
+                "count": 6,
+                "next": null,
+                "previous": null,
+                "results": [
+                    {
+                        "id": 564367,
+                        "image": "https://media.rawg.io/media/screenshots/1c7/1c78c72e5ade3df06474b186befdfa8e.jpg",
+                        "width": 2560,
+                        "height": 1440,
+                        "is_deleted": false
+                    },
+                    {
+                        "id": 564368,
+                        "image": "https://media.rawg.io/media/screenshots/0e2/0e2bc7cd0a20473a8c84cc707bc814d9.jpg",
+                        "width": 2560,
+                        "height": 1440,
+                        "is_deleted": false
+                    },
+                    {
+                        "id": 564369,
+                        "image": "https://media.rawg.io/media/screenshots/415/415da63a7a3c181d06e311a574b39c67.jpg",
+                        "width": 2560,
+                        "height": 1440,
+                        "is_deleted": false
+                    },
+                    {
+                        "id": 564370,
+                        "image": "https://media.rawg.io/media/screenshots/679/67918bad4239ae8aa75deb8de757cc57.jpg",
+                        "width": 2560,
+                        "height": 1440,
+                        "is_deleted": false
+                    },
+                    {
+                        "id": 564371,
+                        "image": "https://media.rawg.io/media/screenshots/efc/efc2c8db00c6b019d9d2ebcaddc1369e.jpg",
+                        "width": 2560,
+                        "height": 1440,
+                        "is_deleted": false
+                    },
+                    {
+                        "id": 564372,
+                        "image": "https://media.rawg.io/media/screenshots/34b/34b735119dae8edcfa1eb03f3af738a9.jpg",
+                        "width": 2560,
+                        "height": 1440,
+                        "is_deleted": false
+                    }
+                ]
+            }
         }
     ]
 }
