@@ -45,4 +45,58 @@ const { title } = Astro.props;
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
 			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 	}
+
+	::view-transition-new(game-page-header):only-child {
+        animation: fromLeft 0.25s ease-out;
+    }
+    ::view-transition-old(game-page-header):only-child {
+        animation: toLeft 0.25s ease-out;
+    }
+	::view-transition-new(home-title):only-child {
+        animation: fromRight 0.25s ease-out;
+    }
+    ::view-transition-old(home-title):only-child {
+        animation: toRight 0.25s ease-out;
+    }
+
+	@keyframes fromLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50vw);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+	@keyframes toLeft {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(-50vw);
+        }
+    }
+    @keyframes fromRight {
+        from {
+            opacity: 0;
+            transform: translateX(50vw);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+    }
+    @keyframes toRight {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(50vw);
+        }
+    }
 </style>

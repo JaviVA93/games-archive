@@ -27,12 +27,13 @@ const data = await response.json();
 <style>
     .homeMain {
         margin: auto;
-        padding: 1.5rem;
+        padding: clamp(10px, 2.32px + 1.81vw, 24px);
         max-width: 1200px;
     }
     .homeMain > h1 {
         text-align: center;
-        view-transition-name: header;
+        margin-top: 0;
+        view-transition-name: home-title;
     }
     .gamesGrid {
         display: grid;
