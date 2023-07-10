@@ -1,7 +1,8 @@
 ---
 import BackSvg from "../../../components/Assets/BackSvg.astro";
 import MetacriticSvg from "../../../components/Assets/MetacriticSvg.astro";
-import gamesData from "../../../data.json";
+import { Image } from "@astrojs/image/components";
+import * as gamesData from "../../../data.json";
 
 export function getStaticPaths() {
     return gamesData.games.map((g) => {
@@ -37,27 +38,41 @@ const platformsNameStr = platformsName.join(", ");
         <h1>{name}</h1>
     </header>
     <div class="imagesContainer">
-        <img
-            src={background_image}
+        <Image
             class="mainImage"
-            style=`view-transition-name: game-${slug}`
+            src={background_image}
             alt=`${name} image`
+            style={`view-transition-name: game-${slug}`}
+            width={900}
+            height={500}
+            aspectRatio={2560 / 1440}
         />
         <div class="gameScreenshots">
-            <img
+            <Image
                 src={screenshots.results[0].image}
                 alt=`${name} screenshot 1`
-                data-pos="1"
+                width={900}
+                height={500}
+                aspectRatio={2560 / 1440}
             />
-            <img
+            <Image
                 src={screenshots.results[1].image}
                 alt=`${name} screenshot 2`
-                data-pos="2"
+                width={900}
+                height={500}
+                aspectRatio={2560 / 1440}
             />
-            <img
+            <!-- <img
                 src={screenshots.results[2].image}
                 alt=`${name} screenshot 3`
                 data-pos="3"
+            /> -->
+            <Image
+                src={screenshots.results[2].image}
+                alt=`${name} screenshot 3`
+                width={900}
+                height={500}
+                aspectRatio={2560 / 1440}
             />
         </div>
     </div>
@@ -129,6 +144,7 @@ const platformsNameStr = platformsName.join(", ");
         display: grid;
         grid-template-columns: 80% 20%;
         gap: 15px;
+        max-height: 500px;
     }
 
     .imagesContainer .mainImage {
@@ -139,6 +155,7 @@ const platformsNameStr = platformsName.join(", ");
     }
 
     .gameScreenshots {
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -146,8 +163,8 @@ const platformsNameStr = platformsName.join(", ");
     }
 
     .gameScreenshots img {
-        max-width: 100%;
-        max-height: 33%;
+        width: 100%;
+        height: auto;
         object-fit: cover;
         object-position: center;
         transition: all 0.25s;
@@ -220,10 +237,6 @@ const platformsNameStr = platformsName.join(", ");
         right: 0;
         background-color: transparent;
         border: 0;
-    }
-
-    .closeSvg * {
-        fill: white;
     }
 
     @media screen and (max-width: 950px) {
