@@ -1,4 +1,6 @@
 ---
+import { Image } from "@astrojs/image/components";
+
 export interface Props {
     name: string;
     imageUrl: string;
@@ -10,7 +12,14 @@ const { name, imageUrl, slug } = Astro.props;
 
 <a href={`/games/${slug}`} class="gameCard">
     <div class="imageCover">
-        <img src={imageUrl} alt=`${name} image` style=`view-transition-name: game-${slug}` />
+        <Image
+            src={imageUrl}
+            alt=`${name} image`
+            style={`view-transition-name: game-${slug}`}
+            width={900}
+            height={500}
+            aspectRatio={2560 / 1440}
+        />
     </div>
     <h2>{name}</h2>
 </a>
