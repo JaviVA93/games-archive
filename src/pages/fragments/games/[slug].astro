@@ -62,11 +62,6 @@ const platformsNameStr = platformsName.join(", ");
                 height={500}
                 aspectRatio={2560 / 1440}
             />
-            <!-- <img
-                src={screenshots.results[2].image}
-                alt=`${name} screenshot 3`
-                data-pos="3"
-            /> -->
             <Image
                 src={screenshots.results[2].image}
                 alt=`${name} screenshot 3`
@@ -159,13 +154,13 @@ const platformsNameStr = platformsName.join(", ");
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        gap: 10px;
         view-transition-name: screenshots-wrapper;
     }
 
     .gameScreenshots img {
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
         object-position: center;
         transition: all 0.25s;
@@ -247,10 +242,11 @@ const platformsNameStr = platformsName.join(", ");
         }
         .gameScreenshots {
             flex-direction: row;
-            gap: 4px;
+            justify-content: space-between;
+            gap: 0;
         }
         .gameScreenshots img {
-            max-width: 32%;
+            width: 32%;
             max-height: unset;
         }
         .gameContentWrapper {
