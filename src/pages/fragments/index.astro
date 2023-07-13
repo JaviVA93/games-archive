@@ -1,8 +1,8 @@
 ---
 import GameCard from "../../components/GameCard.astro";
-import gamesData from "../../data.json"
+import gamesData from "../../data.json";
 
-const data = gamesData.games 
+const data = gamesData.games;
 ---
 
 <main class="homeMain">
@@ -20,13 +20,39 @@ const data = gamesData.games
             })
         }
     </div>
+    <footer>
+        <p>
+            This site uses
+            <a target="_blank"
+                href="https://developer.chrome.com/docs/web-platform/view-transitions/"
+                >View Transition API</a
+            >
+            and the
+            <a target="_blank"
+                href="https://developer.chrome.com/docs/web-platform/navigation-api/"
+                >Navigation API</a>
+        </p>
+        <p>
+            Check the code on 
+            <a target="_blank"
+                href="https://github.com/JaviVA93/games-archive"
+                >GitHub</a
+            >
+        </p>
+    </footer>
 </main>
 
 <style>
     .homeMain {
+        max-width: 1200px;
+        height: 100vh;
         margin: auto;
         padding: clamp(10px, 2.32px + 1.81vw, 24px);
-        max-width: 1200px;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .homeMain > h1 {
         text-align: center;
@@ -39,6 +65,19 @@ const data = gamesData.games
         gap: 20px;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         width: 100%;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 50px;
+        margin-top: auto;
+    }
+
+    footer a {
+        color: var(--color-2);
     }
 
     @media screen and (max-width: 500px) {
